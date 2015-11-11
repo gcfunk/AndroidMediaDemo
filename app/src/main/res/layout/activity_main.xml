@@ -29,7 +29,7 @@
     <SeekBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
+        android:id="@+id/volume"
         android:indeterminate="false"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
@@ -44,4 +44,23 @@
         android:layout_below="@+id/pauseButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seek"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/volume"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrubber"
+        android:layout_below="@+id/textView2"
+        android:layout_alignRight="@+id/volume"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:indeterminate="false" />
 </RelativeLayout>

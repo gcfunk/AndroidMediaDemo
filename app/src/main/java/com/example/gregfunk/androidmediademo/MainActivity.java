@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.VideoView;
-import android.widget.MediaController;
 import android.media.MediaPlayer;
 import android.view.View;
 import android.widget.SeekBar;
@@ -46,14 +44,33 @@ public class MainActivity extends ActionBarActivity {
         int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         int currVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 
-        SeekBar volumeControl = (SeekBar) findViewById(R.id.seekBar);
+        SeekBar volumeControl = (SeekBar) findViewById(R.id.volume);
         volumeControl.setMax(maxVolume);
         volumeControl.setProgress(currVolume);
         volumeControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                Log.i("SeekBar value", Integer.toString(progress));
+                Log.i("Volume value", Integer.toString(progress));
                 audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        SeekBar scrubber = (SeekBar) findViewById(R.id.scrubber);
+        scrubber.setMax(mplayer.getDuration());
+        scrubber.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Log.i("Scrubber value", Integer.toString(progress));
             }
 
             @Override
