@@ -7,8 +7,19 @@ import android.view.MenuItem;
 import android.widget.VideoView;
 import android.widget.MediaController;
 import android.media.MediaPlayer;
+import android.view.View;
 
 public class MainActivity extends ActionBarActivity {
+
+    MediaPlayer mplayer;
+
+    public void playAudio(View view) {
+        mplayer.start();
+    }
+
+    public void pauseAudio(View view) {
+        mplayer.pause();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +35,7 @@ public class MainActivity extends ActionBarActivity {
 
         video.start();*/
 
-        MediaPlayer mplayer = MediaPlayer.create(this, R.raw.pool);
-        mplayer.start();
+        mplayer = MediaPlayer.create(this, R.raw.pool);
     }
 
     @Override
