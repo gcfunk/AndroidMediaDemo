@@ -1,5 +1,6 @@
 package com.example.gregfunk.androidmediademo;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -10,10 +11,12 @@ import android.media.MediaPlayer;
 import android.view.View;
 import android.widget.SeekBar;
 import android.util.Log;
+import android.media.AudioManager;
 
 public class MainActivity extends ActionBarActivity {
 
     MediaPlayer mplayer;
+    AudioManager audioManager;
 
     public void playAudio(View view) {
         mplayer.start();
@@ -39,11 +42,18 @@ public class MainActivity extends ActionBarActivity {
 
         mplayer = MediaPlayer.create(this, R.raw.pool);
 
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        int currVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+
         SeekBar volumeControl = (SeekBar) findViewById(R.id.seekBar);
+        volumeControl.setMax(maxVolume);
+        volumeControl.setProgress(currVolume);
         volumeControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 Log.i("SeekBar value", Integer.toString(progress));
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
             }
 
             @Override
