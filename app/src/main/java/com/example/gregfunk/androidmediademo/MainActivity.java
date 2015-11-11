@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.SeekBar;
 import android.util.Log;
 import android.media.AudioManager;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -65,8 +67,16 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        SeekBar scrubber = (SeekBar) findViewById(R.id.scrubber);
+        final SeekBar scrubber = (SeekBar) findViewById(R.id.scrubber);
         scrubber.setMax(mplayer.getDuration());
+
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                scrubber.setProgress(mplayer.getCurrentPosition());
+            }
+        }, 0, 1000);
+
         scrubber.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
