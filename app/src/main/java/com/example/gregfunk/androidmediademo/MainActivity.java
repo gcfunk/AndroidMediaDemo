@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.VideoView;
 import android.widget.MediaController;
+import android.media.MediaPlayer;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -23,7 +24,8 @@ public class MainActivity extends ActionBarActivity {
 
         video.start();*/
 
-
+        MediaPlayer mplayer = MediaPlayer.create(this, R.raw.pool);
+        mplayer.start();
     }
 
     @Override
