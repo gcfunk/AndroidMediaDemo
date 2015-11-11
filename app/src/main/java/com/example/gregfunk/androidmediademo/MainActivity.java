@@ -8,6 +8,8 @@ import android.widget.VideoView;
 import android.widget.MediaController;
 import android.media.MediaPlayer;
 import android.view.View;
+import android.widget.SeekBar;
+import android.util.Log;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -36,6 +38,24 @@ public class MainActivity extends ActionBarActivity {
         video.start();*/
 
         mplayer = MediaPlayer.create(this, R.raw.pool);
+
+        SeekBar volumeControl = (SeekBar) findViewById(R.id.seekBar);
+        volumeControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Log.i("SeekBar value", Integer.toString(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     @Override
