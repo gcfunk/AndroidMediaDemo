@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.VideoView;
+import android.widget.MediaController;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -15,6 +16,11 @@ public class MainActivity extends ActionBarActivity {
 
         VideoView video = (VideoView) findViewById(R.id.videoView);
         video.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.samplevideo_1080x720_2mb);
+
+        MediaController mediaController = new MediaController(this);
+        mediaController.setAnchorView(video);
+        video.setMediaController(mediaController);
+
         video.start();
     }
 
