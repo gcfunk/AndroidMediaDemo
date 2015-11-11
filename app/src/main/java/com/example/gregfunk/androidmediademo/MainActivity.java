@@ -14,14 +14,16 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        VideoView video = (VideoView) findViewById(R.id.videoView);
+        /*VideoView video = (VideoView) findViewById(R.id.videoView);
         video.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.samplevideo_1080x720_2mb);
 
         MediaController mediaController = new MediaController(this);
         mediaController.setAnchorView(video);
         video.setMediaController(mediaController);
 
-        video.start();
+        video.start();*/
+
+
     }
 
     @Override
