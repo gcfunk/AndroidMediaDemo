@@ -80,7 +80,9 @@ public class MainActivity extends ActionBarActivity {
         scrubber.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                Log.i("Scrubber value", Integer.toString(progress));
+                if (fromUser) {
+                    mplayer.seekTo(progress);
+                }
             }
 
             @Override
